@@ -29,7 +29,7 @@ class QuestionOptionSelectionsController < ApplicationController
 
     respond_to do |format|
       if @question_option_selection.save
-        format.html { redirect_to @question_answer_question_option_selection_path(@question_answer), notice: 'Question option selection was successfully created.' }
+        format.html { redirect_to question_answer_question_option_selection_path(@question_answer), notice: 'Question option selection was successfully created.' }
         format.json { render :show, status: :created, location: @question_option_selection }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class QuestionOptionSelectionsController < ApplicationController
   def update
     respond_to do |format|
       if @question_option_selection.update(question_option_selection_params)
-        format.html { redirect_to @question_answer_question_option_selection_path(@question_answer), notice: 'Question option selection was successfully updated.' }
+        format.html { redirect_to question_answer_question_option_selection_path(@question_answer), notice: 'Question option selection was successfully updated.' }
         format.json { render :show, status: :ok, location: @question_option_selection }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class QuestionOptionSelectionsController < ApplicationController
   def destroy
     @question_option_selection.destroy
     respond_to do |format|
-      format.html { redirect_to @question_answer_question_option_selection_path(@question_answer), notice: 'Question option selection was successfully destroyed.' }
+      format.html { redirect_to question_answer_question_option_selection_path(@question_answer), notice: 'Question option selection was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
