@@ -85,33 +85,34 @@ ActiveRecord::Schema.define(version: 2020_05_26_143046) do
   end
 
   create_table "surveys", force: :cascade do |t|
-    t.boolean "public", default: false, null: false
     t.integer "likes", default: 0, null: false
     t.integer "dislikes", default: 0, null: false
     t.bigint "user_id"
     t.boolean "deployed", default: false
     t.text "public_ciphertext"
+    t.string "public_bidx"
     t.text "creationDate_ciphertext"
     t.text "expiryDate_ciphertext"
     t.text "created_at_ciphertext"
     t.text "updated_at_ciphertext"
     t.text "survey_name_ciphertext"
+    t.index ["public_bidx"], name: "index_surveys_on_public_bidx", unique: true
     t.index ["user_id"], name: "index_surveys_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "stripe_customer_id"
     t.boolean "premium", default: false, null: false
     t.text "email_ciphertext"
+    t.string "email_bidx"
     t.text "reset_password_token_ciphertext"
     t.text "reset_password_sent_at_ciphertext"
     t.text "remember_created_at_ciphertext"
     t.text "created_at_ciphertext"
     t.text "updated_at_ciphertext"
     t.text "consent_ciphertext"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email_bidx"], name: "index_users_on_email_bidx", unique: true
   end
 
   add_foreign_key "question_answers", "questions"

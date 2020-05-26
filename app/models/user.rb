@@ -6,7 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  encrypts :email, type: :string#, migrating: true
+  encrypts :email, type: :string, key: ENV["USER_EMAIL_ENCRYPTION_KEY"]#, migrating: true
+  blind_index :email
   encrypts :reset_password_token, type: :string#, migrating: true
   encrypts :reset_password_sent_at, type: :datetime#, migrating: true
   encrypts :remember_created_at, type: :datetime#, migrating: true

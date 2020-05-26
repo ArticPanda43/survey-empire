@@ -7,6 +7,8 @@ class EncryptColumns < ActiveRecord::Migration[5.2]
     add_column :question_answers, :updated_at_ciphertext, :text
 
     add_column :surveys, :public_ciphertext, :text
+    add_column :surveys, :public_bidx, :string
+    add_index :surveys, :public_bidx, unique: true
     add_column :surveys, :creationDate_ciphertext, :text
     add_column :surveys, :expiryDate_ciphertext, :text
     add_column :surveys, :created_at_ciphertext, :text
@@ -14,6 +16,8 @@ class EncryptColumns < ActiveRecord::Migration[5.2]
     add_column :surveys, :survey_name_ciphertext, :text
 
     add_column :users, :email_ciphertext, :text
+    add_column :users, :email_bidx, :string
+    add_index :users, :email_bidx, unique: true
     add_column :users, :reset_password_token_ciphertext, :text
     add_column :users, :reset_password_sent_at_ciphertext, :text
     add_column :users, :remember_created_at_ciphertext, :text

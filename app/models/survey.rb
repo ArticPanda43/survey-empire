@@ -7,6 +7,7 @@ class Survey < ApplicationRecord
 	validate :end_date_is_after_start_date
 
 	encrypts :public, type: :boolean#, migrating: true
+	blind_index :public
 	encrypts :creationDate, type: :datetime#, migrating: true
 	encrypts :expiryDate, type: :datetime#, migrating: true
 	encrypts :created_at, type: :datetime#, migrating: true
