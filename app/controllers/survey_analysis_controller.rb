@@ -37,7 +37,7 @@ class SurveyAnalysisController < ApplicationController
           for questionAnswer in question.question_answers
             puts questionAnswer.timeEnded
             puts questionAnswer.timeStarted
-            timeTaken = questionAnswer.timeEnded - questionAnswer.timeStarted
+            timeTaken = abs(questionAnswer.timeEnded - questionAnswer.timeStarted)
             if timeTaken < 10 then
               timesTaken[0] = timesTaken[0] + 1
             elsif timeTaken < 30 then
