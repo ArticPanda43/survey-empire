@@ -43,7 +43,7 @@ class SurveysController < ApplicationController
   # GET /surveys/1
   # GET /surveys/1.json
   def show
-    if params['answered'] == 'true' or params['belongsToUser'] == 'true' or params['analyse'] == 'true' then
+    if @survey.expiryDate < Time.now or params['answered'] == 'true' or params['belongsToUser'] == 'true' or params['analyse'] == 'true' then
       @questions = @survey.questions
       puts 'showing survey'
       #remove this to allow data streaming (though it won't stream yet :()
