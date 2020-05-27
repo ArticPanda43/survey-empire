@@ -35,6 +35,7 @@
                               <%= f.label :consent, class:'form-check-label', style: 'color: #fff;margin:0;' do%>
                                 <% ("I agree to the #{link_to("Terms of Service", home_termsofservice_path, class: 'link', style:"color:#0000EE;")}.").html_safe %>
                               <% end %>
+                              <%= f.check_box :premium, class:'form-check-input' %>
                             </div>
 
                             <div class="actions text-left">
