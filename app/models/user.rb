@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :surveys, dependent: :destroy
+  validates :email, uniqueness: true
   validates :consent, presence: true
   validates_confirmation_of :password
   devise :database_authenticatable, :registerable,

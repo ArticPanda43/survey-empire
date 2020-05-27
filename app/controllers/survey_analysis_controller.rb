@@ -35,7 +35,9 @@ class SurveyAnalysisController < ApplicationController
             countOfAnswers.push(0)
           end
           for questionAnswer in question.question_answers
-            timeTaken = questionAnswer.created_at - questionAnswer.timeStarted
+            puts questionAnswer.timeEnded
+            puts questionAnswer.timeStarted
+            timeTaken = questionAnswer.timeEnded - questionAnswer.timeStarted
             if timeTaken < 10 then
               timesTaken[0] = timesTaken[0] + 1
             elsif timeTaken < 30 then
@@ -56,7 +58,7 @@ class SurveyAnalysisController < ApplicationController
         else
           #loop through ANSWERS and count given answers
           for questionAnswer in question.question_answers
-            timeTaken = questionAnswer.created_at - questionAnswer.timeStarted
+            timeTaken = questionAnswer.timeEnded - questionAnswer.timeStarted
             if timeTaken < 10 then
               timesTaken[0] = timesTaken[0] + 1
             elsif timeTaken < 30 then

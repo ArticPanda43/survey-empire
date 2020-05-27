@@ -25,6 +25,9 @@ class QuestionAnswersController < ApplicationController
   # POST /question_answers
   # POST /question_answers.json
   def create
+    if already_answered?
+      head :no_content
+    else
     @question_answer = QuestionAnswer.new(question_answer_params)
     @question_answer.timeEnded = DateTime.now
     #respond_to do |format|
@@ -52,6 +55,7 @@ class QuestionAnswersController < ApplicationController
       end
     #end
     #redirect_to action: :
+    end
     
   end
 
@@ -100,4 +104,8 @@ class QuestionAnswersController < ApplicationController
         params.require(:question_answer).permit(:question_id, :user_id, :givenAnswer, :timeStarted, :timeEnded, :survey_id)
       #end
     end
+
+    def already_answered?
+      QuestionAnswer.where(user_id: current_user.id, question_id: @question.id).exists?
+    end 
 end

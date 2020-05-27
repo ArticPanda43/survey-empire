@@ -8,7 +8,7 @@ class EncryptColumns < ActiveRecord::Migration[5.2]
 
     add_column :surveys, :public_ciphertext, :text
     add_column :surveys, :public_bidx, :string
-    add_index :surveys, :public_bidx, unique: true
+    add_index :surveys, :public_bidx
     add_column :surveys, :creationDate_ciphertext, :text
     add_column :surveys, :expiryDate_ciphertext, :text
     add_column :surveys, :created_at_ciphertext, :text

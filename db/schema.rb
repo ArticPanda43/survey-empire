@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_143046) do
     t.text "created_at_ciphertext"
     t.text "updated_at_ciphertext"
     t.text "survey_name_ciphertext"
-    t.index ["public_bidx"], name: "index_surveys_on_public_bidx", unique: true
+    t.index ["public_bidx"], name: "index_surveys_on_public_bidx"
     t.index ["user_id"], name: "index_surveys_on_user_id"
   end
 

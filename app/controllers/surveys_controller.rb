@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy, :survey_analytics]
   before_action :check_deployed, only: [:edit, :update]
-  #before_action :check_premium, only: [:new, :create]
+  before_action :check_premium, only: [:new, :create]
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   include ActionController::Live
 
