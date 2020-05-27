@@ -35,8 +35,9 @@ class SurveyAnalysisController < ApplicationController
             countOfAnswers.push(0)
           end
           for questionAnswer in question.question_answers
-            puts questionAnswer.timeEnded
-            puts questionAnswer.timeStarted
+            if questionAnswer.timeEnded.nil? || questionAnswer.timeStarted.nil?
+              next
+            else
             timeTaken = questionAnswer.timeEnded - questionAnswer.timeStarted
             if timeTaken < 10 then
               timesTaken[0] = timesTaken[0] + 1
@@ -54,6 +55,7 @@ class SurveyAnalysisController < ApplicationController
                 countOfAnswers[index] = countOfAnswers[index] + 1
               end
             end
+          end
           end
         else
           #loop through ANSWERS and count given answers
